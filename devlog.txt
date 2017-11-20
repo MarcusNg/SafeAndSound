@@ -1,1 +1,5 @@
-.
+ngM -- 2017-11-19 19:20:50
++ Setup app.py and jinja templates
+
+ngM -- 2017-11-19 21:23:46
++ Meetup API query for nearby events and return array of events
