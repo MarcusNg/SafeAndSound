@@ -1,6 +1,6 @@
 import requests
 
-api_key = 'APIKEY'
+api_key = 'API_KEY'
 
 # Find events - Returns array of nearby events containing information
 def find_events(lat, long, radius):

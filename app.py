@@ -12,7 +12,8 @@ def root():
     
 @app.route("/map", methods=["GET", "POST"])
 def map():
-    return render_template('map.html')
+    events = find_events(40.713, -74.007, 1)
+    return render_template('map.html', events=events)
 
 @app.route("/event", methods=["GET"])
 def event():
