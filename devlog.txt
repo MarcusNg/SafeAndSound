@@ -5,3 +5,5 @@ ngM -- 2017-11-19 21:23:46
 + Meetup API query for nearby events and return array of events
 
 ngM -- 2017-11-19 23:10:07
++ Added Google Maps API
++ Events show in map
