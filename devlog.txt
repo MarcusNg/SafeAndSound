@@ -10,3 +10,6 @@ ngM -- 2017-11-19 23:10:07
 
 ngM -- 2017-11-20 21:36:48
 + Added new site mockups to design doc
+
+ngM -- 2017-11-20 23:50:34
++ Added event search functionality

@@ -13,6 +13,17 @@
 {% block content %}
 <h1>Event Finder</h1>
 
+<form method="POST" action="/map">
+  <input type="text" name="address" placeholder="Address (ex: 345 Chambers Street)"><br>
+  <input type="text" name="radius" placeholder="Mile Radius (ex: 1)"><br>
+  <input type="submit" value="Find Events">
+</form>
+
+{% set messages = get_flashed_messages() %}
+{% for message in messages %}
+<h4>{{ message }}</h4>
+{% endfor %}
+   
 <div id="map"></div>
 <script>
   function initMap() {
@@ -21,10 +32,20 @@
   zoom: 14,
   center: nyc
   });
+
+  {% if location is defined %}
+  var currentLocation = { lat: {{ location[0] }}, lng: {{ location[1] }} };
+  
+  var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 14,
+  center: currentLocation
+  });
+  
   var currentLocationMarker = new google.maps.Marker ({
-  position: nyc,
+  position: currentLocation,
   map: map
   });
+  {% endif %}
   
 
   {% for event in events %}
@@ -56,6 +77,6 @@
 
 
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
 </script>
 {% endblock %}
