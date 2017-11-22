@@ -49,11 +49,11 @@
   
 
   {% for event in events %}
-  createEventMarker( '{{ event[0] }}', {{ event[3] }}, {{ event[4] }} );
+  createEventMarker( '{{ event[0] }}', {{ event[3] }}, {{ event[4] }}, '{{ event[5] }}' );
   {% endfor %}
   
 
-  function createEventMarker(name, lat, lon) {
+  function createEventMarker(name, lat, lon, address) {
   var location = { lat: lat, lng: lon };
 
   var marker = new google.maps.Marker ({
@@ -62,9 +62,9 @@
   icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
   title: 'name'
   });
-
+    
   var infowindow = new google.maps.InfoWindow ({
-  content: `${name}<br>Address goes here`
+  content: `${name}<br>${address}`
   });
   
   google.maps.event.addListener(marker, 'click', function() {
@@ -77,6 +77,6 @@
 
 
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
 </script>
 {% endblock %}

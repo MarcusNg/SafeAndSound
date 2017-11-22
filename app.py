@@ -31,7 +31,6 @@ def map():
 
 @app.route("/event", methods=["GET"])
 def event():
-    print(find_events(40.713, -74.007, 1))
     return render_template('event.html')
 
 if __name__ == "__main__":

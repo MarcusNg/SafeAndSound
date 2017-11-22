@@ -1,6 +1,7 @@
 import requests
+import maps
 
-api_key = 'API_KEY'
+api_key = ''
 
 # Find events - Returns array of nearby events containing information
 def find_events(lat, long, radius):
@@ -14,9 +15,13 @@ def find_events(lat, long, radius):
             new_event.append(event['name'])
             new_event.append(event['time'])
             new_event.append(event['description'])
-            new_event.append(event['venue']['lat'])
-            new_event.append(event['venue']['lon'])
+            lat = event['venue']['lat']
+            lon = event['venue']['lon']
+            new_event.append(lat)
+            new_event.append(lon)
+            new_event.append(maps.convert_latlon(lat, lon))
             events.append(new_event)
         
     return events
 
+# Get event info - Returns array of event info

@@ -1,5 +1,6 @@
 import requests
 
+api_key = ''
 # Get latitude and longitude of address - Returns array [lat,lon]
 def convert_address(address):
     query = address.replace(' ', '%20')
@@ -11,6 +12,15 @@ def convert_address(address):
         lat = location['lat']
         lon = location['lng']
         return [lat,lon]
+
+def convert_latlon(lat, lon):
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lon + '&key=' + api_key
+    r = requests.get(url)
+    data = r.json()
+    if data['status'] == 'OK':
+        address = data['results']['formatted_address']
+        return address
+    
 
 
 
