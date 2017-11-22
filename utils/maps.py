@@ -1,6 +1,6 @@
 import requests
 
-api_key = 'API_KEY'
+api_key = ''
 
 # Get latitude and longitude of address - Returns array [lat,lon]
 def convert_address(address):

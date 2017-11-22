@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title>Find Events</title>
+<title>Event Finder</title>
 <style>
   #map {
   height: 600px;
   width: 90%;
   }
 </style>
+
+<script type="text/javascript">
+  function redirectToEvent() {
+  window.location = "/event";
+  }
+</script>
 {% endblock %}
 
 {% block content %}
@@ -64,19 +70,22 @@
   });
     
   var infowindow = new google.maps.InfoWindow ({
-  content: `${name}<br>${address}`
+  content: " "
   });
   
   google.maps.event.addListener(marker, 'click', function() {
+  infowindow.setContent(`${name}<br>${address}<br>
+  <button onclick="redirectToEvent()">More Info</button>`);
   infowindow.open(map, this);
   });
   }
+
   }
 </script>
 
 
 
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
 </script>
 {% endblock %}

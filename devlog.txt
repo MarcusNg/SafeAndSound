@@ -16,3 +16,6 @@ ngM -- 2017-11-20 23:50:34
 
 ngM -- 2017-11-21 20:56:27
 + Event addresses appear in tooltip
+
+ngM -- 2017-11-22 11:42:38
++ Event 'More Info' button redirects to /event
