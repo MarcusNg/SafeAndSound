@@ -22,3 +22,6 @@ ngM -- 2017-11-22 11:42:38
 
 chenT -- 2017-11-23 21:53:30
 + added bootstrap and css to maps.html
+
+chenT -- 2017-11-23 22:03:30
++ added bootstrap and css to events.html
