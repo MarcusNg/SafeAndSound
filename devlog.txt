@@ -19,3 +19,6 @@ ngM -- 2017-11-21 20:56:27
 
 ngM -- 2017-11-22 11:42:38
 + Event 'More Info' button redirects to /event
+
+chenT -- 2017-11-23 21:53:30
++ added bootstrap and css to maps.html
