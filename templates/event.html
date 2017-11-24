@@ -2,8 +2,43 @@
 
 {% block title %}
 <title>Event Information</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+  #title{
+  background-color:lightsteelblue;
+  }
+
+  #info{
+  background-color:lightsteelblue;
+  }
+
+  #nearby{
+  background-color:lightsteelblue;
+  }
+</style>
+
 {% endblock %}
 
 {% block content %}
-Event info!
+
+<div id="title" class="col-sm-12">
+    <div class="well well-sm"> 
+      <h1>Event Finder</h1>
+    </div>
+</div>
+
+<div id="info" class="col-sm-6">
+  <div class="well well-sm">
+    <h2>Event Title</h2>
+  </div>
+</div>
+
+<div id="nearby" class="col-sm-6">
+  <div class="well well-sm">
+    <h2>Nearby Events</h2>
+  </div>
+</div>
+
 {% endblock %}
