@@ -6,7 +6,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <style>
 
   #map{
@@ -74,13 +73,13 @@
     </div>
   </div>
 
-  <div class="alert alert-warning">
+  <div class="alert alert-danger">
     {% set messages = get_flashed_messages() %}
     {% for message in messages %}
     <h4>{{ message }}</h4>
     {% endfor %}
   </div>
-   
+  
   <div id="map" class="col-sm-12">
     <script>
       function initMap() {
