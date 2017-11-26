@@ -5,16 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <style>
-  #title{
-  background-color: #F4F6FA;
-  }
-
-  #info{
-  background-color: #F4F6FA;
-  }
-
-  #nearby{
+  body {
   background-color: #F4F6FA;
   }
 </style>
@@ -32,19 +25,28 @@
 <div id="info" class="col-sm-6">
   <div class="well well-sm" style="overflow:hidden;">
     <h3>{{event[0]}}</h3>
-    {{event[1]}}<br>
-    {{event[5]}}<br>
-    {{event[2]}}
-      
-    <a href="/map" class="btn btn-primary btn-block" role="button">Back To Map</a>
+    <h4>{{event[5]}}</h4>
+    <h4>{{event[1]}}</h4><br>
+    {{event[2]|safe}}
+    
+    <a href="/map" class="btn btn-primary btn-block" style="background-color:#94D1C9" role="button">Back To Map</a>
   </div>
 </div>
 
 <div id="nearby" class="col-sm-6">
   <div class="well well-sm" style="overflow:hidden;">
-    <h2>Nearby Events</h2>
+    <h3>Nearby Events</h3>
     {% for nearby_event in nearby %}
-    {{nearby_event[0]}}<br><br>
+    <form method="POST" action="/event">
+	<input type="hidden" name="name" value='{{nearby_event[0]}}'>
+	<input type="hidden" name="time" value='{{nearby_event[1]}}'>
+	<input type="hidden" name="description" value='{{nearby_event[2]}}'>
+	<input type="hidden" name="lat" value='{{nearby_event[3]}}'>
+	<input type="hidden" name="lon" value='{{nearby_event[4]}}'>
+	<input type="hidden" name="address" value='{{nearby_event[5]}}'>
+	<input type="submit" value='{{nearby_event[0]}}'>
+    </form>
+    <br><br>
     {% endfor %}
   </div>
 </div>

@@ -30,3 +30,7 @@ ngM -- 2017-11-25 19:01:39
 + Event info is passed to event html
 + Nearby events show up in event html
 + Fixed bootstrap text expansion
+
+ngM -- 2017-11-25 23:34:45
++ Description of events show correctly
++ Nearby events link to corresponding event info
