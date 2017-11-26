@@ -2,7 +2,7 @@ from utils.maps import *
 from utils.events import *
 
 from flask import Flask, redirect, url_for, render_template, session, request, flash
-import requests, os
+import requests, os, time
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
@@ -29,10 +29,20 @@ def map():
             
     return render_template('map.html', events=events)
 
-@app.route("/event", methods=["GET"])
+@app.route("/event", methods=["POST"])
 def event():
-    return render_template('event.html')
+    nearby = []
+    name = request.form["name"]
+    timestamp = float(request.form["time"]) / 1000.0
+    date = time.strftime('%m/%d/%Y, %A %H:%M', time.localtime(timestamp))
+    description = request.form["description"]
+    lat = request.form["lat"]
+    lon = request.form["lon"]
+    address = request.form["address"]
+    event = [name, date, description, lat, lon, address]
+    nearby = find_events(lat, lon, 2)
+    return render_template('event.html', event=event, nearby=nearby)
 
 if __name__ == "__main__":
-	app.debug = True
-	app.run()
+    app.debug = True
+    app.run()

@@ -25,3 +25,8 @@ chenT -- 2017-11-23 21:53:30
 
 chenT -- 2017-11-23 22:03:30
 + added bootstrap and css to events.html
+
+ngM -- 2017-11-25 19:01:39
++ Event info is passed to event html
++ Nearby events show up in event html
++ Fixed bootstrap text expansion

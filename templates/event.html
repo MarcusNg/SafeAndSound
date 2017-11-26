@@ -7,15 +7,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
   #title{
-  background-color:lightsteelblue;
+  background-color: #F4F6FA;
   }
 
   #info{
-  background-color:lightsteelblue;
+  background-color: #F4F6FA;
   }
 
   #nearby{
-  background-color:lightsteelblue;
+  background-color: #F4F6FA;
   }
 </style>
 
@@ -30,17 +30,22 @@
 </div>
 
 <div id="info" class="col-sm-6">
-  <div class="well well-sm" style="height:500px;">
-    <h2>Event Title</h2>
-    info
+  <div class="well well-sm" style="overflow:hidden;">
+    <h3>{{event[0]}}</h3>
+    {{event[1]}}<br>
+    {{event[5]}}<br>
+    {{event[2]}}
+      
     <a href="/map" class="btn btn-primary btn-block" role="button">Back To Map</a>
   </div>
 </div>
 
 <div id="nearby" class="col-sm-6">
-  <div class="well well-sm" style="height:500px;">
+  <div class="well well-sm" style="overflow:hidden;">
     <h2>Nearby Events</h2>
-    events
+    {% for nearby_event in nearby %}
+    {{nearby_event[0]}}<br><br>
+    {% endfor %}
   </div>
 </div>
 
