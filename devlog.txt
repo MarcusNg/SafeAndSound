@@ -34,3 +34,6 @@ ngM -- 2017-11-25 19:01:39
 ngM -- 2017-11-25 23:34:45
 + Description of events show correctly
 + Nearby events link to corresponding event info
+
+ngM -- 2017-11-26 19:55:04
++ Added README.md
