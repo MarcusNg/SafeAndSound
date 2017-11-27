@@ -1,6 +1,6 @@
 # Event Finder
 ## Team SafeAndSound
-Event Finder is a web application that allows you to find upcoming events and meetups in a certain raidus of a specified location. After inputting your desired address and radius (miles), click the 'Find Events' button. Your Location appears as a red marker and events show up as green markers. When clicking on an event, you have the option to click the 'More Info' button, which brings you to a new page with more information about the selected event and shows you other events in a 2 miles raidus of the selected event.
+Event Finder is a web application that allows you to find upcoming events and meetups in a certain raidus of a specified location. After inputting your desired address and radius (miles), click the 'Find Events' button. Your Location appears as a red marker and events show up as green markers. When clicking on an event, you have the option to click the 'More Info' button, which brings you to a new page with more information about the selected event and shows you other events in a 2 mile radius of the selected event.
 
 ## API Keys
 Event Finder relies on the Google Maps API and Meetup.com API.
@@ -23,4 +23,4 @@ Event Finder relies on the Google Maps API and Meetup.com API.
      * Set `api_key = '<YOUR MEETUP API KEY>'`
 3. Next `$ pip install flask` and `$ pip install requests`
 4. Run the application `$ python app.py`
-5. Go to localhost to use the web app.
+5. Go to localhost to use the web app
