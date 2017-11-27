@@ -1,7 +1,7 @@
 import requests
 import maps
 
-api_key = 'a234059652f51166754647e41401e7'
+api_key = ''
 
 # Find events - Returns array of nearby events containing information
 def find_events(lat, lon, radius):
