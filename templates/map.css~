@@ -1,0 +1,22 @@
+map {
+    height: 600px;
+    width: 100%;
+}
+
+about {
+  background-color: #F4F6FA;
+  height: 200px;
+}
+
+searchbar {
+  background-color: #F4F6FA;
+  height: 200px;
+}
+
+title {
+  background-color: #F4F6FA;
+}
+
+p {
+  font-size:20px;
+}

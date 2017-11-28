@@ -18,7 +18,7 @@ def find_events(lat, lon, radius):
                 if name == each[0]:
                     exists = True
                     break
-            if not exists:
+            if not exists and event.get('description'):
                 print "Adding: " + name
                 new_event.append(event['name']) # [0]
                 new_event.append(event['time']) # [1]
