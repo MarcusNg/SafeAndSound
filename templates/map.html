@@ -5,30 +5,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="map.css">
+
 <style>
-#map {
-    height: 600px;
-    width: 100%;
-}
-
-#about {
-  background-color: #F4F6FA;
-  height: 200px;
-}
-
-#searchbar {
-  background-color: #F4F6FA;
-  height: 200px;
-}
-
-#title {
-  background-color: #F4F6FA;
-}
-
-p {
-  font-size:20px;
-}
+  #map {
+  height: 600px;
+  width: 100%;
+  }
+  
 </style>
+  
 
 {% endblock %}
 
@@ -41,7 +27,6 @@ p {
   </div>
 
   <div id="searchbar" class="col-sm-6">
-    <center>
        <form method="POST" action="/map">
 	  <div class="well well-sm"> 
 	    <div class="form-group">
@@ -50,17 +35,14 @@ p {
 	      <input type="submit" class="btn btn-info btn-md" style="background-color:#94D1C9;" value="Find Events">
 	    </div>
 	  </div>
-	</form>
-    </center>
+       </form>
  </div>
 
   
   <div id="about" class="col-sm-6">
-    <div class="well well-sm"> 
-      <center>
+    <div class="well well-sm">
 	<h2>Welcome to Event Finder!</h2>
 	<p>Enter an address to find nearby events in a specified radius. Click an event for more information.</p>
-      </center>
     </div>
   </div>
 

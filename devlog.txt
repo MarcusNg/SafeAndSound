@@ -40,3 +40,6 @@ ngM -- 2017-11-25 23:34:45
 
 ngM -- 2017-11-26 19:55:04
 + Added README.md
+
+luoE -- 2017-11-27 23:29
++ Continued work on css; css seems to be acting weird with the bootstrap

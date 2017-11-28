@@ -1,16 +1,13 @@
-#map {
-    height: 600px;
-    width: 100%;
-}
-
 #about {
   background-color: #F4F6FA;
   height: 200px;
+  text-align: center;
 }
 
 #searchbar {
   background-color: #F4F6FA;
   height: 200px;
+  text-align: center;
 }
 
 #title {
