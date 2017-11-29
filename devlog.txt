@@ -41,8 +41,14 @@ ngM -- 2017-11-25 23:34:45
 ngM -- 2017-11-26 19:55:04
 + Added README.md
 
+luoE -- 2017-11-27 14:50
++ Started moving styling from html to css
+
 luoE -- 2017-11-27 23:29
 + Continued work on css; css seems to be acting weird with the bootstrap
+
+chenT & luoE & olevksyL & ngM -- 2017-11-28 14:50
++ Tried to fix bugs with css
 
 ngM -- 2017-11-28 19:43:56
 + Fixed CSS
