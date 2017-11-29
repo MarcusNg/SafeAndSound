@@ -43,3 +43,7 @@ ngM -- 2017-11-26 19:55:04
 
 luoE -- 2017-11-27 23:29
 + Continued work on css; css seems to be acting weird with the bootstrap
+
+ngM -- 2017-11-28 19:43:56
++ Fixed CSS
++ Made a json for API keys

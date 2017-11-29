@@ -1,12 +1,11 @@
 import requests
 import maps
-
-api_key = ''
+import app
 
 # Find events - Returns array of nearby events containing information
 def find_events(lat, lon, radius):
     events = []
-    url = 'https://api.meetup.com/2/open_events?&sign=true&photo-host=public&lat=' + str(lat) + '&lon=' + str(lon) + '&radius=' + str(radius) + '&page=20&key=' + api_key
+    url = 'https://api.meetup.com/2/open_events?&sign=true&photo-host=public&lat=' + str(lat) + '&lon=' + str(lon) + '&radius=' + str(radius) + '&page=20&key=' + app.MEETUP_API_KEY
     r = requests.get(url)
     data = r.json()
     for event in data['results']:

@@ -1,145 +1,109 @@
 {% extends "base.html" %}
 
 {% block title %}
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="static/map.css">
-
-<style>
-  body {
-  background-color: coral;
-  }
-
-  p {
-  font-size:20px;
-  }
-  
-  #map {
-  height: 600px;
-  width: 100%
-  }
-  
-  #about {
-  height: 200px;
-  text-align: center;
-  }
-  
-  #searchbar {
-  height: 200px;
-  text-align: center;
-  }
-  
-  #title {
-  }
-  
-</style>
+<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='map.css') }}>
 
 {% endblock %}
 
 {% block content %}
-<div id="all">
-  <div id="title" class="col-sm-12">
+<div id="title" class="col-sm-12">
+  <div class="well well-sm"> 
+    <h1>Event Finder</h1>
+  </div>
+</div>
+
+<div id="searchbar" class="col-sm-6">
+  <form method="POST" action="/map">
     <div class="well well-sm"> 
-      <h1>Event Finder</h1>
+      <div class="form-group">
+	<input type="text" class="form-control" name="address" placeholder="Address (ex: 345 Chambers Street)"><br>
+	<input type="text" class="form-control" name="radius" placeholder="Mile Radius (ex: 1)"><br>
+	<input type="submit" class="btn btn-info btn-md" style="background-color:#94D1C9;" value="Find Events">
+      </div>
     </div>
+  </form>
+</div>
+
+<div id="about" class="col-sm-6">
+  <div class="well well-sm">
+    <h2>Welcome to Event Finder!</h2>
+    <p>Enter an address to find nearby events in a specified radius. Click an event for more information.</p>
   </div>
+</div>
 
-  <div id="searchbar" class="col-sm-6">
-       <form method="POST" action="/map">
-	  <div class="well well-sm"> 
-	    <div class="form-group">
-	      <input type="text" class="form-control" name="address" placeholder="Address (ex: 345 Chambers Street)"><br>
-	      <input type="text" class="form-control" name="radius" placeholder="Mile Radius (ex: 1)"><br>
-	      <input type="submit" class="btn btn-info btn-md" style="background-color:#94D1C9;" value="Find Events">
-	    </div>
-	  </div>
-       </form>
- </div>
+<div id="alert" class="alert alert-danger">
+  {% set messages = get_flashed_messages() %}
+  {% for message in messages %}
+  <h4>{{ message }}</h4>
+  {% endfor %}
+</div>
 
-  
-  <div id="about" class="col-sm-6">
-    <div class="well well-sm">
-	<h2>Welcome to Event Finder!</h2>
-	<p>Enter an address to find nearby events in a specified radius. Click an event for more information.</p>
-    </div>
-  </div>
+<div id="map" class="col-sm-12">
+  <script>
+    function initMap() {
+    var nyc = { lat: 40.713, lng: -74.007 };
+    var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: nyc
+    });
 
-  <div class="alert alert-danger">
-    {% set messages = get_flashed_messages() %}
-    {% for message in messages %}
-    <h4>{{ message }}</h4>
+    {% if location is defined %}
+    var currentLocation = { lat: {{ location[0] }}, lng: {{ location[1] }} };
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: currentLocation
+    });
+    
+    var currentLocationMarker = new google.maps.Marker ({
+    position: currentLocation,
+    map: map
+    });
+    {% endif %}
+    
+
+    {% for event in events %}
+    createEventMarker('{{event[0]}}',{{event[1]}},'{{event[2]}}',{{event[3]}},{{event[4]}},'{{event[5]}}');
     {% endfor %}
-  </div>
-  
-  <div id="map" class="col-sm-12">
-    <script>
-      function initMap() {
-      var nyc = { lat: 40.713, lng: -74.007 };
-      var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
-      center: nyc
-      });
-
-      {% if location is defined %}
-      var currentLocation = { lat: {{ location[0] }}, lng: {{ location[1] }} };
-  
-      var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
-      center: currentLocation
-      });
-  
-      var currentLocationMarker = new google.maps.Marker ({
-      position: currentLocation,
-      map: map
-      });
-      {% endif %}
-  
-
-      {% for event in events %}
-      createEventMarker('{{event[0]}}',{{event[1]}},'{{event[2]}}',{{event[3]}},{{event[4]}},'{{event[5]}}');
-      {% endfor %}
-  
-
-      function createEventMarker(name, time, description, lat, lon, address) {
-      
-      var location = { lat: lat, lng: lon };
-
-      var marker = new google.maps.Marker ({
-      position: location,
-      map: map,
-      icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-      title: `${name}`
-      });
     
-      var infowindow = new google.maps.InfoWindow ({
-      content: " "
-      });
 
-      google.maps.event.addListener(marker, 'click', function() {
-
-      infowindow.setContent(`${name}<br>${address}<br>
-      <form method="POST" action="/event">
-	<input type="hidden" name="name" value='${name}'>
-	<input type="hidden" name="time" value='${time}'>
-	<input type="hidden" name="description" value='${description}'>
-	<input type="hidden" name="lat" value='${lat}'>
-	<input type="hidden" name="lon" value='${lon}'>
-	<input type="hidden" name="address" value='${address}'>
-	<input type="submit" value="More Info">
-      </form>`);
-      infowindow.open(map, this);
-      });
-      }
-      
-      }
-    </script>
+    function createEventMarker(name, time, description, lat, lon, address) {
     
-    <script async defer
-	  src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
-    </script>
-   </div>
+    var location = { lat: lat, lng: lon };
+
+    var marker = new google.maps.Marker ({
+    position: location,
+    map: map,
+    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+    title: `${name}`
+    });
+    
+    var infowindow = new google.maps.InfoWindow ({
+    content: " "
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+
+    infowindow.setContent(`${name}<br>${address}<br>
+    <form method="POST" action="/event">
+      <input type="hidden" name="name" value='${name}'>
+      <input type="hidden" name="time" value='${time}'>
+      <input type="hidden" name="description" value='${description}'>
+      <input type="hidden" name="lat" value='${lat}'>
+      <input type="hidden" name="lon" value='${lon}'>
+      <input type="hidden" name="address" value='${address}'>
+      <input type="submit" value="More Info">
+    </form>`);
+    infowindow.open(map, this);
+    });
+    }
+    
+    }
+  </script>
+  
+  <script async defer
+	  src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_KEY}}&callback=initMap">
+  </script>
 </div>
 
 {% endblock %}

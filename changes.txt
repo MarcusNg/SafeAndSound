@@ -1,0 +1,2 @@
+- We decided to not allow the user to choose a location on the map by holding down on the map to place a pin
+- When we show nearby events in the "Nearby Events" section of the event information page, we only show the name of each event instead of showing the name and the radius
