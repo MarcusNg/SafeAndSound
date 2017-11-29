@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+
+p {
+    font-size:20px;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+}
+
+#about {
+    height: 200px;
+    text-align: center;
+}
+
+#searchbar {
+    height: 200px;
+    text-align: center;
+}
+
+#title {
+}
+
